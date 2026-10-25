@@ -2,7 +2,7 @@
 
 Technical content writer with 3+ years of experience in SEO content writing, blog writing, landing pages and technical documentation, backed by a Bachelor of Science in Computer Science. I turn technical topics into clear, search-friendly content for software and IT audiences. Based in Australia, with full work rights.
 
-📧 [hudashykh1997@gmail.com](mailto:hudashykh1997@gmail.com) · 🔗 [LinkedIn](https://www.linkedin.com/in/huda-shaikh-1a154222b) · 🌐 [hudashykh.github.io](https://hudashykh.github.io/)
+📧 [hudashykh1997@gmail.com](mailto:hudashykh1997@gmail.com) · 🔗 [LinkedIn](https://www.linkedin.com/in/huda-shaikh-1a154222b) · 🌐 [hudashykh.github.io/technical-writing-portfolio](https://hudashykh.github.io/technical-writing-portfolio/)
 
 ---
 
