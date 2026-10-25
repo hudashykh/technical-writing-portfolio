@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huda Shaikh | Technical Content Writer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue: #EA580C; --blue-light: #FFF1E8; --blue-mid: #FED7BF;
+    --blue-dark: #C2410C; --text: #2A1B14; --muted: #7A5C4D;
+    --border: #F3DCCB; --bg: #ffffff; --bg2: #FFF8F3;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 60px; z-index: 100; }
+  .nav-name { font-weight: 600; font-size: 0.95rem; color: var(--blue); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blue); }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 5rem 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  #hero { background: linear-gradient(135deg, #FFF1E8 0%, #ffffff 60%); padding: 6rem 0 5rem; border-bottom: 1px solid var(--border); }
+  .hero-inner { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+  .hero-badge { display: inline-block; background: var(--blue-mid); color: var(--blue); font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.9rem; border-radius: 100px; margin-bottom: 1.5rem; letter-spacing: 0.03em; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 0.5rem; }
+  .hero-title { font-size: 1.1rem; color: var(--blue); font-weight: 500; margin-bottom: 1.25rem; }
+  .hero-desc { font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 2rem; }
+  .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.3rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-primary:hover { background: var(--blue-dark); }
+  .btn-outline { background: #fff; color: var(--blue); border: 1.5px solid var(--blue); }
+  .btn-outline:hover { background: var(--blue-light); }
+
+  .sec-heading { font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+  .sec-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 2.25rem; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+  .about-text p { color: var(--muted); font-size: 0.93rem; line-height: 1.85; margin-bottom: 1rem; }
+  .about-facts { background: var(--blue-light); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .fact-row { display: flex; align-items: center; gap: 0.75rem; }
+  .fact-icon { width: 34px; height: 34px; background: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; border: 1px solid var(--border); }
+  .fact-label { color: var(--muted); font-size: 0.78rem; }
+  .fact-val { color: var(--text); font-weight: 500; font-size: 0.88rem; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+  .skill-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; transition: border-color 0.2s; }
+  .skill-card:hover { border-color: var(--blue); }
+  .skill-card-title { font-size: 0.78rem; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.65rem; }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .pill { font-size: 0.75rem; padding: 0.2rem 0.55rem; background: #fff; border: 1px solid var(--border); border-radius: 100px; color: var(--text); }
+
+  .filter-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
+  .ftag { padding: 0.28rem 0.85rem; border-radius: 100px; border: 1.5px solid var(--border); background: #fff; font-size: 0.78rem; font-weight: 500; color: var(--muted); cursor: pointer; transition: all 0.18s; }
+  .ftag:hover, .ftag.on { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+
+  .cases-list { display: flex; flex-direction: column; gap: 1rem; }
+  .case-card { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
+  .case-card:hover { border-color: #FDBA74; }
+  .case-card.open { border-color: var(--blue); }
+  .case-top { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem; cursor: pointer; user-select: none; }
+  .case-emoji { font-size: 22px; width: 44px; height: 44px; background: var(--blue-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .case-info { flex: 1; }
+  .case-cat-label { font-size: 0.72rem; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.15rem; }
+  .case-name { font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.4; }
+  .case-tags { display: flex; gap: 0.4rem; align-items: center; margin-left: auto; flex-shrink: 0; }
+  .tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 100px; font-weight: 500; }
+  .tag-med  { background: #fef9c3; color: #854d0e; }
+  .tag-high { background: #fee2e2; color: #991b1b; }
+  .tag-low  { background: #FFE8D6; color: #9A3412; }
+  .tag-time { background: var(--bg2); color: var(--muted); border: 1px solid var(--border); }
+  .case-arrow { color: var(--muted); font-size: 0.75rem; margin-left: 0.5rem; transition: transform 0.25s; }
+  .case-card.open .case-arrow { transform: rotate(180deg); }
+  .case-body { display: none; border-top: 1px solid var(--border); padding: 1.25rem 1.4rem; background: var(--bg2); }
+  .case-card.open .case-body { display: block; }
+
+  .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
+  .sum-block { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem 1rem; }
+  .sum-block-label { font-size: 0.68rem; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+  .sum-block-val { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+  .steps-heading { font-size: 0.78rem; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.85rem; }
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.1rem; }
+  .step { display: flex; gap: 0.85rem; align-items: flex-start; }
+  .step-num { background: var(--blue); color: #fff; font-size: 0.68rem; font-weight: 600; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .step-text { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+  .step-text strong { color: var(--text); font-weight: 500; }
+  .result-box { background: #FFF1E8; border: 1px solid #FDBA74; border-radius: 8px; padding: 0.85rem 1rem; }
+  .result-label { font-size: 0.68rem; font-weight: 600; color: #EA580C; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+  .result-text { font-size: 0.83rem; color: var(--muted); line-height: 1.55; }
+
+  .exp-list { display: flex; flex-direction: column; gap: 1.25rem; }
+  .exp-card { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; padding: 1.4rem 1.5rem; border-left: 4px solid var(--blue); }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.2rem; flex-wrap: wrap; gap: 0.5rem; }
+  .exp-role { font-size: 1rem; font-weight: 600; color: var(--text); }
+  .exp-date { font-size: 0.78rem; background: var(--blue-mid); color: var(--blue); padding: 0.2rem 0.65rem; border-radius: 100px; font-weight: 500; }
+  .exp-company a { color:inherit; text-decoration:underline; text-underline-offset:3px; }
+  .exp-company { font-size: 0.85rem; color: var(--blue); margin-bottom: 0.9rem; font-weight: 500; }
+  .exp-bul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+  .exp-bul li { font-size: 0.85rem; color: var(--muted); padding-left: 1.1rem; position: relative; line-height: 1.65; }
+  .exp-bul li::before { content: '•'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .proj-card { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; padding: 1.3rem 1.4rem; transition: border-color 0.2s, transform 0.2s; }
+  .proj-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .proj-title { font-size: 0.93rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text); }
+  .proj-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.85rem; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .proj-tag { font-size: 0.72rem; padding: 0.18rem 0.5rem; background: var(--blue-light); color: var(--blue); border-radius: 4px; font-weight: 500; }
+
+  #contact { background: var(--blue-light); border-top: 1px solid var(--blue-mid); }
+  .contact-inner { text-align: center; }
+  .contact-inner p { color: var(--muted); font-size: 0.9rem; max-width: 440px; margin: 0 auto 2rem; line-height: 1.75; }
+  .contact-cards { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .contact-card { background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: 0.85rem 1.4rem; display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
+  .contact-card:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+  .contact-card svg { color: var(--blue); flex-shrink: 0; }
+
+  footer { text-align: center; padding: 1.75rem 2rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); background: #fff; }
+
+  @media(max-width: 640px) {
+    nav { padding: 0 1rem; } .nav-links { gap: 1.2rem; } .nav-links a { font-size: 0.78rem; }
+    .container { padding: 0 1.1rem; } .hero-inner { padding: 0 1.1rem; }
+    .about-grid { grid-template-columns: 1fr; } .summary-grid { grid-template-columns: 1fr; }
+    .proj-grid { grid-template-columns: 1fr; } .case-tags { display: none; }
+    section { padding: 3.5rem 0; }
+  }
+
+  .case-shot { display:block; width:100%; height:auto; border:1px solid var(--border); border-radius:8px; margin-bottom:1.1rem; background:#fff; }
+  .case-body .sum-block-val, .step-text { overflow-wrap: anywhere; }
+  .nav-links { flex-wrap: wrap; }
+
+  .copy-full { margin-top: 1.25rem; }
+  .copy-sec { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 0.95rem 1.1rem; margin-bottom: 0.75rem; }
+  .copy-h { font-size: 0.92rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+  .copy-sec p, .copy-sec li { font-size: 0.84rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.5rem; }
+  .copy-sec ul, .copy-sec ol { padding-left: 1.2rem; margin-bottom: 0.5rem; }
+  .copy-sec strong { color: var(--text); font-weight: 500; }
+
+  .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:1.25rem; }
+  .g-tile { background:#fff; border:1.5px solid var(--border); border-radius:12px; overflow:hidden; cursor:pointer; text-align:left; padding:0; font:inherit; color:inherit; display:flex; flex-direction:column; transition:border-color .2s, transform .2s, box-shadow .2s; }
+  .g-tile:hover, .g-tile:focus-visible { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 8px 24px rgba(234,88,12,.12); outline:none; }
+  .g-thumb { aspect-ratio:16/10; background:var(--bg2); border-bottom:1px solid var(--border); overflow:hidden; }
+  .g-thumb img { width:100%; height:100%; object-fit:cover; object-position:top left; display:block; }
+  .g-info { padding:1rem 1.15rem 1.15rem; display:flex; flex-direction:column; gap:.35rem; flex:1; }
+  .g-info .case-name { font-size:.92rem; }
+  .g-tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:auto; padding-top:.5rem; }
+  .modal { position:fixed; inset:0; background:rgba(42,27,20,.62); display:none; align-items:flex-start; justify-content:center; padding:2rem 1rem; overflow-y:auto; z-index:200; }
+  .modal.open { display:flex; }
+  .m-panel { background:#fff; border-radius:14px; max-width:780px; width:100%; padding:1.6rem 1.6rem 1.75rem; position:relative; box-shadow:0 20px 60px rgba(42,27,20,.3); }
+  .m-close { position:absolute; top:.8rem; right:.8rem; width:34px; height:34px; border-radius:50%; border:1px solid var(--border); background:#fff; color:var(--muted); font-size:1.1rem; cursor:pointer; line-height:1; }
+  .m-close:hover { color:var(--blue); border-color:var(--blue); }
+  .m-title { font-size:1.15rem; font-weight:700; color:var(--text); margin:.15rem 2.2rem .6rem 0; line-height:1.35; }
+  .m-tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.1rem; }
+  .m-panel .case-shot { margin-bottom:1.1rem; }
+  @media(max-width:640px){ .gallery{grid-template-columns:1fr;} .m-panel{padding:1.25rem 1.1rem 1.4rem;} }
+
+  /* --- eye-catching layer --- */
+  #hero { position:relative; overflow:hidden; padding:5rem 0 6.5rem; }
+  #hero::before { content:""; position:absolute; width:520px; height:520px; right:-160px; top:-200px; border-radius:50%; background:radial-gradient(circle,#FED7AA 0%,rgba(254,215,170,0) 70%); pointer-events:none; }
+  .hero-grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:2.5rem; align-items:center; position:relative; }
+  .hero-visual { position:relative; height:330px; }
+  .hv-card { position:absolute; width:78%; border-radius:12px; overflow:hidden; border:1px solid var(--border); background:#fff; box-shadow:0 18px 40px rgba(194,65,12,.18); }
+  .hv-card img { display:block; width:100%; height:auto; }
+  .hv-a { top:0; left:0; transform:rotate(-3deg); }
+  .hv-b { bottom:0; right:0; transform:rotate(3deg); }
+  .hv-tag { position:absolute; left:6%; bottom:8%; background:var(--blue); color:#fff; font-size:.74rem; font-weight:600; padding:.35rem .8rem; border-radius:100px; box-shadow:0 8px 20px rgba(234,88,12,.35); z-index:3; }
+  .stats { position:relative; z-index:2; max-width:860px; margin:-3.2rem auto 0; padding:0 2rem; }
+  .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); background:#fff; border:1px solid var(--border); border-radius:14px; box-shadow:0 12px 32px rgba(42,27,20,.08); }
+  .stat { padding:1.2rem 1rem; text-align:center; border-left:1px solid var(--border); }
+  .stat:first-child { border-left:0; }
+  .stat-n { font-size:1.7rem; font-weight:700; color:var(--blue); line-height:1.1; }
+  .stat-l { font-size:.76rem; color:var(--muted); margin-top:.3rem; line-height:1.4; }
+  #about { padding-top:4.5rem; }
+  .kicker { display:inline-block; font-size:.74rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); margin-bottom:.5rem; }
+
+  .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .g-tile { animation:rise .55s ease both; }
+  .g-tile:nth-child(2){animation-delay:.06s} .g-tile:nth-child(3){animation-delay:.12s} .g-tile:nth-child(4){animation-delay:.18s} .g-tile:nth-child(5){animation-delay:.24s}
+  @keyframes rise { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
+  .g-thumb { position:relative; }
+  .g-thumb img { object-position:top center; transition:transform .5s ease; }
+  .g-tile:hover .g-thumb img, .g-tile:focus-visible .g-thumb img { transform:scale(1.04); }
+  .g-view { position:absolute; right:.8rem; bottom:.8rem; background:var(--blue); color:#fff; font-size:.74rem; font-weight:600; padding:.35rem .8rem; border-radius:100px; opacity:0; transform:translateY(6px); transition:all .25s; }
+  .g-tile:hover .g-view, .g-tile:focus-visible .g-view { opacity:1; transform:none; }
+  .g-feature { grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); border-color:#FDBA74; }
+  .g-feature .g-thumb { aspect-ratio:auto; min-height:300px; border-bottom:0; border-right:1px solid var(--border); }
+  .g-feature .g-info { padding:1.6rem 1.6rem 1.7rem; justify-content:center; gap:.55rem; }
+  .g-feature .case-name { font-size:1.25rem; line-height:1.35; }
+  .feat-pill { align-self:flex-start; background:var(--blue); color:#fff; font-size:.7rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:.22rem .7rem; border-radius:100px; }
+  .feat-line { font-size:.88rem; color:var(--muted); line-height:1.65; margin:.1rem 0 .4rem; }
+  .feat-link { font-size:.84rem; font-weight:600; color:var(--blue); margin-top:.3rem; }
+  .g-feature .g-tags { margin-top:0; padding-top:.2rem; }
+  @media(prefers-reduced-motion:reduce){ .g-tile{animation:none} .g-thumb img{transition:none} }
+  @media(max-width:800px){
+    .hero-grid{grid-template-columns:1fr} .hero-visual{display:none}
+    #hero{padding:4rem 0 5.5rem}
+    .stats{padding:0 1.1rem} .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3){border-left:0} .stat:nth-child(n+3){border-top:1px solid var(--border)}
+    .gallery{grid-template-columns:1fr} .g-feature{grid-template-columns:1fr}
+    .g-feature .g-thumb{min-height:0;aspect-ratio:16/10;border-right:0;border-bottom:1px solid var(--border)}
+  }
+
+  /* thumbnail proportions to match the screenshots */
+  .g-thumb { aspect-ratio:21/9; }
+  .g-thumb img { object-position:top left; }
+  .g-tile:hover .g-thumb img, .g-tile:focus-visible .g-thumb img { transform:scale(1.03); }
+  .g-feature { grid-template-columns:minmax(0,1.7fr) minmax(0,1fr); }
+  .g-feature .g-thumb { aspect-ratio:1.87; min-height:0; }
+  .g-feature .g-info { padding:1.3rem 1.35rem 1.4rem; }
+  .g-feature .case-name { font-size:1.12rem; }
+  @media(max-width:800px){ .g-feature{grid-template-columns:1fr} .g-feature .g-thumb{aspect-ratio:1.87} .g-thumb{aspect-ratio:21/9} }
+
+  /* --- merged intro section (peach, editorial) --- */
+  .intro { background:#FFE3D0; padding:5.5rem 0 4.5rem; border-bottom:1px solid #F4CFBE; }
+  .intro-inner { max-width:860px; margin:0 auto; padding:0 2rem; color:#2A1B14; }
+  .intro .hero-badge { background:#fff; color:#2A1B14; margin-bottom:1.4rem; }
+  .intro h1 { font-family:'Playfair Display',Georgia,serif; font-weight:500; font-size:clamp(2.4rem,6vw,3.6rem); line-height:1.1; color:#2A1B14; margin:0 0 2.6rem; letter-spacing:-.01em; }
+  .intro-head { text-align:right; margin-bottom:2rem; }
+  .intro-head h2 { font-family:'Playfair Display',Georgia,serif; font-weight:500; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#2A1B14; margin:0 0 .6rem; }
+  .intro-sub { font-family:'Playfair Display',Georgia,serif; font-style:italic; font-size:1.1rem; line-height:1.55; color:#4A3228; max-width:360px; margin:0 0 0 auto; }
+  .intro-body { max-width:560px; }
+  .intro-body p { font-size:.9rem; line-height:1.85; color:#3A2820; margin-bottom:1.1rem; }
+  .intro-body a { color:#2A1B14; text-decoration:underline; text-underline-offset:3px; font-weight:500; }
+  .intro-body a:hover { color:#B4491F; }
+  .intro .hero-links { margin-top:1.6rem; }
+  .intro .btn-primary { background:#2A1B14; color:#fff; }
+  .intro .btn-primary:hover { background:#4A3228; }
+  .intro .btn-outline { background:transparent; color:#2A1B14; border-color:#2A1B14; }
+  .intro .btn-outline:hover { background:#fff; }
+  .intro-h3 { font-family:'Playfair Display',Georgia,serif; font-style:italic; font-weight:500; font-size:1.5rem; color:#2A1B14; margin:2rem 0 .8rem; }
+  .intro-inner { max-width:1040px !important; display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:3rem; align-items:center; }
+  .intro h1 { margin-bottom:2rem; }
+  .intro-head { text-align:left; margin-bottom:1.4rem; }
+  .intro-head h2 { font-size:clamp(1.5rem,3.4vw,2.1rem); }
+  .intro-sub { margin:0; max-width:480px; font-size:1rem; }
+  .intro-img { margin:0; }
+  .intro-img img { width:100%; height:auto; display:block; mix-blend-mode:multiply; }
+  @media(max-width:860px){ .intro-inner { grid-template-columns:1fr; gap:2rem; } .intro-img { max-width:300px; margin:0 auto; } }
+  .skills-grid { grid-template-columns:repeat(auto-fit,minmax(200px,1fr)) !important; align-items:start; }
+  .skill-list { list-style:none; margin:0; padding:0; }
+  .skill-list li { font-size:.9rem; line-height:1.5; color:var(--text); padding:.28rem 0; }
+  .intro { position:relative; overflow:hidden; }
+  .intro-inner { display:block !important; }
+  .intro-text { max-width:560px; }
+  .intro-img { position:absolute; top:0; right:0; width:clamp(360px,40vw,560px); }
+  @media(max-width:860px){ .intro-img { position:static; width:auto; max-width:300px; margin:2rem auto 0; } }
+  .intro .btn-outline { color:var(--blue-dark) !important; border-color:var(--blue-dark) !important; text-transform:uppercase; font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-decoration:none !important; }
+  .intro .btn-outline:hover { background:#fff; color:var(--blue-dark) !important; }
+  /* --- editorial intro layout --- */
+  .intro { position:relative; overflow:hidden; padding:4.5rem 0 5rem; }
+  .intro-inner { display:block !important; max-width:1040px !important; }
+  .intro-head { text-align:right !important; margin-bottom:2.5rem !important; }
+  .intro-head h2 { font-size:clamp(2rem,5vw,3.1rem) !important; }
+  .intro-sub { margin:0 0 0 auto !important; max-width:360px !important; font-size:1.1rem !important; }
+  .intro-grid { display:grid; grid-template-columns:minmax(0,380px) minmax(0,1fr); gap:3.5rem; align-items:start; }
+  .intro-img { position:static !important; width:100% !important; margin:0 !important; }
+  .intro-img img { width:100%; height:auto; display:block; mix-blend-mode:multiply; }
+  .intro-h3 { font-size:1.15rem !important; margin:1.8rem 0 .6rem !important; }
+  @media(max-width:860px){ .intro-grid { grid-template-columns:1fr; gap:1.8rem; } .intro-head { text-align:left !important; } .intro-sub { margin:0 !important; } .intro-img { max-width:300px; } }
+  /* --- intro v3: text left, image top-right corner --- */
+  .intro-head { text-align:left !important; margin-bottom:1.6rem !important; }
+  .intro-sub { margin:0 !important; max-width:480px !important; }
+  .intro-grid { display:block !important; max-width:580px; }
+  .intro-img { position:absolute !important; top:0; right:0; width:clamp(360px,40vw,560px) !important; }
+  @media(max-width:860px){ .intro-grid { max-width:none; } .intro-img { position:static !important; width:auto !important; max-width:300px; margin:0 0 1.8rem !important; } .intro-inner { display:flex !important; flex-direction:column; } .intro-img { order:3; margin:2rem auto 0 !important; } }
+  /* --- interests full-width under image --- */
+  .intro-grid { min-height:calc(clamp(360px,40vw,560px) * 1.06 - 4.5rem - 9.5rem + 1rem); }
+  .intro-wide .intro-h3 { margin-top:0 !important; }
+  .intro-wide p { max-width:none; font-size:.9rem; line-height:1.85; color:#3A2820; margin-bottom:1.1rem; }
+  @media(max-width:860px){ .intro-grid { min-height:0; } }
+  /* nav dark orange */
+  nav { background:#9A3412 !important; border-bottom:1px solid #7C2D12 !important; }
+  .nav-name { color:#fff !important; }
+  .nav-links a { color:#FFE8D6 !important; }
+  .nav-links a:hover { color:#fff !important; }
+  /* interests inline style */
+  .intro-wide .intro-h3 { display:inline !important; font-family:'Inter',system-ui,sans-serif !important; font-style:normal !important; font-weight:700 !important; font-size:1.6rem !important; color:#2A1B14 !important; margin:0 .5rem 0 0 !important; vertical-align:baseline; }
+  .intro-wide p { display:inline !important; font-size:1.05rem !important; line-height:1.75 !important; color:#2A1B14 !important; }
+  .intro-wide .hero-links { display:block; margin-top:1.8rem; }
+  /* nav: a shade or two darker than peach */
+  nav { background:#F6BE9F !important; border-bottom:1px solid #EBA67F !important; }
+  .nav-name { color:#7C2D12 !important; }
+  .nav-links a { color:#3A2014 !important; }
+  .nav-links a:hover { color:#9A3412 !important; }
+  .intro-wide .intro-h3 { font-family:'Playfair Display',Georgia,serif !important; font-style:italic !important; font-weight:500 !important; font-size:1.7rem !important; }
+  .intro-wide p { font-family:'Inter',system-ui,sans-serif !important; font-size:.9rem !important; line-height:1.85 !important; color:#3A2820 !important; font-weight:400 !important; }
+  .intro-wide .intro-h3 { font-size:1.45rem !important; }
+  .skill-list { list-style:disc !important; padding-left:1.1rem !important; }
+  .skill-list li { padding-left:.2rem; }
+  .skill-list li::marker { color:var(--blue); }
+  .skills-grid { display:flex !important; gap:1rem; align-items:flex-start; }
+  .skill-col { flex:1; min-width:0; display:flex; flex-direction:column; gap:1rem; }
+  @media(max-width:700px){ .skills-grid { flex-direction:column; } .skill-col { width:100%; } }
+  /* equal-size skill cards: 3 x 2, same pairing as columns */
+  .skills-grid { display:grid !important; grid-template-columns:repeat(3,1fr); grid-auto-rows:1fr; gap:1rem; align-items:stretch !important; }
+  .skill-col { display:contents !important; }
+  .skill-col:nth-child(1) .skill-card:nth-child(1){order:1} .skill-col:nth-child(2) .skill-card:nth-child(1){order:2} .skill-col:nth-child(3) .skill-card:nth-child(1){order:3}
+  .skill-col:nth-child(1) .skill-card:nth-child(2){order:4} .skill-col:nth-child(2) .skill-card:nth-child(2){order:5} .skill-col:nth-child(3) .skill-card:nth-child(2){order:6}
+  .skill-card { height:100%; }
+  @media(max-width:700px){ .skills-grid { grid-template-columns:1fr; grid-auto-rows:auto; } }
+  #skills .sec-heading { margin-bottom:1.5rem; }
+  /* --- v4: interests directly under text; mobile mirrors desktop --- */
+  .intro-grid { min-height:0 !important; max-width:580px !important; }
+  .intro-wide { max-width:580px; margin-top:1.4rem; }
+  @media(max-width:1100px){
+    .intro-img { width:34vw !important; min-width:300px; }
+    .intro-grid, .intro-wide { max-width:56vw !important; }
+  }
+  @media(max-width:700px){
+    .intro { padding-top:3.2rem !important; }
+    .intro-inner { display:block !important; padding:0 1.1rem !important; }
+    .intro-img { position:absolute !important; top:0 !important; right:0 !important; width:40vw !important; min-width:0 !important; max-width:none !important; margin:0 !important; order:0; }
+    .intro-head { max-width:56vw; margin-bottom:1.2rem !important; }
+    .intro-head h2 { font-size:1.65rem !important; }
+    .intro-sub { font-size:.95rem !important; max-width:none !important; }
+    .intro-grid, .intro-wide { max-width:none !important; }
+    .intro-grid { margin-top:max(0px, calc(42vw - 12rem)); }
+    .intro-wide .intro-h3 { font-size:1.3rem !important; }
+  }
+  @media(min-width:1101px){ .intro-wide { max-width:none !important; } }
+  @media(min-width:1101px){ .intro-img { width:clamp(340px,26vw,440px) !important; } }
+  #skills { padding:4rem 0 4.5rem; }
+  @media(max-width:640px){
+    .intro { padding:4rem 0 3.5rem; } .intro-inner { padding:0 1.1rem; }
+    .intro-head { text-align:left; } .intro-sub { margin:0; }
+    #skills .sec-heading { margin-bottom:1.5rem; }
+  #skills { padding:3rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Huda Shaikh</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#cases">My Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="about" class="intro">
+  <figure class="intro-img"><img src="assets/intro-laptop.webp" alt="Hands on a golden laptop"></figure>
+  <div class="intro-inner">
+    <div class="intro-head">
+      <h2>A little about me</h2>
+      <p class="intro-sub">3+ years of experience in content writing, social media and copywriting.</p>
+    </div>
+    <div class="intro-grid">
+      
+      <div class="intro-body">
+      <p>I graduated with a Bachelor of Science in Computer Science (BSCS) from Isra University, Pakistan and then I began my career as a Technical Content Writer, working with IT companies, including Expedey, <a href="https://progatix.com/" target="_blank" rel="noopener">Progatix</a>, and G-Tech Solutions based in Karachi. Through both full-time and remote roles, I’ve written customer-facing content that makes complex systems and technical concepts easier for people to understand and use.</p>
+      <p>I’ve written across various niches, including technology, lifestyle, and construction. My work has been featured on official company websites as well as client websites, including <a href="https://www.osits.pk/" target="_blank" rel="noopener">OSITS</a> and <a href="https://imbedtech.com/" target="_blank" rel="noopener">IMBED Tech</a>.</p>
+      
+        
+      </div>
+    </div>
+    <div class="intro-wide">
+      <h3 class="intro-h3">My Interests</h3>
+      <p>Beyond writing, I love spending quality time with my husband and family, watching shows on Netflix, playing chess, and hanging out with loved ones. I also run an Instagram page called “Fragments of Huda”, where I share little glimpses of the things I love and moments from my everyday life.</p>
+      <div class="hero-links">
+        <a href="#cases" class="btn btn-outline">My Work</a>
+        <a href="mailto:hudashykh1997@gmail.com" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <h2 class="sec-heading">Skills</h2>
+    <div class="skills-grid"><div class="skill-col"><div class="skill-card"><div class="skill-card-title">Technical Writing</div><ul class="skill-list"><li>Technical/ SEO Content</li><li>Website Content Writing</li><li>Documentation/Case studies</li><li>Articles</li><li>Blog Writing</li></ul></div><div class="skill-card"><div class="skill-card-title">Editing and Planning</div><ul class="skill-list"><li>Editing</li><li>Proofreading</li><li>Research</li><li>Content calendars</li></ul></div></div><div class="skill-col"><div class="skill-card"><div class="skill-card-title">SEO</div><ul class="skill-list"><li>Keyword research</li><li>On-page SEO</li><li>SERP optimization</li><li>Performance tracking</li><li>Website analysis</li></ul></div><div class="skill-card"><div class="skill-card-title">Tools</div><ul class="skill-list"><li>CMS management (WordPress)</li><li>Google Analytics (basic)</li><li>LSI Graphs (basic)</li><li>Keyword research tools</li></ul></div></div><div class="skill-col"><div class="skill-card"><div class="skill-card-title">Web Copy</div><ul class="skill-list"><li>Landing Pages/ Home Page</li><li>Product writing</li><li>Ad copy</li><li>Social media content</li></ul></div><div class="skill-card"><div class="skill-card-title">Technical Background</div><ul class="skill-list"><li>HTML and CSS</li><li>JavaScript</li><li>PHP (CodeIgniter/Laravel)</li><li>MySQL</li><li>REST APIs</li></ul></div></div></div>
+  </div>
+</section>
+
+<section id="cases" style="background: var(--bg2);">
+  <div class="container">
+    <span class="kicker">Selected work</span>
+    <h2 class="sec-heading">A Glimpse of My Work</h2>
+    <p class="sec-sub">Explore a selection of my writing projects below. Click on each sample to discover its purpose, target audience, and the approach I took to create each piece.</p>
+    <div class="filter-row">
+      <button class="ftag on" onclick="filter('all', this)">All</button>
+      <button class="ftag" onclick="filter('web', this)">Website Copy</button>
+      <button class="ftag" onclick="filter('landing', this)">Landing Pages</button>
+    </div>
+    <div class="gallery" id="casesList">
+      <button type="button" class="g-tile g-feature" data-cat="landing" onclick="openTile(this)" aria-haspopup="dialog">
+        <div class="g-thumb"><img src="assets/osits-homepage-hero.png" alt="OSITS homepage hero reading Software Development Company in Pakistan" loading="lazy"></div>
+        <div class="g-info"><span class="feat-pill">Featured</span><div class="case-cat-label">Landing Page</div><div class="case-name">OSITS: Software Development Company in Pakistan</div><p class="feat-line">Targets the country and cities for search while staying readable: an eyebrow line, a headline with the service and market, and a benefit-first paragraph.</p><div class="g-tags"><span class="tag tag-low">Landing page</span><span class="tag tag-time">Local SEO</span></div><span class="feat-link">View full sample →</span></div>
+        <div class="g-detail" hidden><div class="case-cat-label">Landing Page</div><h3 class="m-title">OSITS: Software Development Company in Pakistan</h3><div class="m-tags"><span class="tag tag-low">Landing page</span><span class="tag tag-time">Local SEO</span></div>
+          <img class="case-shot" src="assets/osits-homepage-hero.png" alt="OSITS homepage hero reading Software Development Company in Pakistan" loading="lazy">
+          <div class="summary-grid"><div class="sum-block"><div class="sum-block-label">Audience</div><div class="sum-block-val">Businesses across Karachi, Lahore and beyond.</div></div><div class="sum-block"><div class="sum-block-label">Goal</div><div class="sum-block-val">Target the country and cities for search while staying readable.</div></div><div class="sum-block"><div class="sum-block-label">Approach</div><div class="sum-block-val">An eyebrow line, a headline with the service and market, and a benefit-first paragraph.</div></div></div>
+          
+          <div class="result-box"><div class="result-label">Excerpt</div><div class="result-text">As a leading software development company in Pakistan, OSITS delivers end-to-end IT solutions, from custom software and mobile apps to AI development and digital marketing, helping businesses across Karachi, Lahore and beyond grow faster with technology.</div></div></div>
+      </button>
+      <button type="button" class="g-tile" data-cat="landing" onclick="openTile(this)" aria-haspopup="dialog">
+        <div class="g-thumb"><img src="assets/progatix-app-dev-hero.png" alt="Progatix landing page hero reading Mobile App Development Company in USA" loading="lazy"><span class="g-view">View sample →</span></div>
+        <div class="g-info"><div class="case-cat-label">Landing Page</div><div class="case-name">Progatix: Mobile App Development Company in USA</div><div class="g-tags"><span class="tag tag-low">Landing page</span><span class="tag tag-time">SEO headline</span></div></div>
+        <div class="g-detail" hidden><div class="case-cat-label">Landing Page</div><h3 class="m-title">Progatix: Mobile App Development Company in USA</h3><div class="m-tags"><span class="tag tag-low">Landing page</span><span class="tag tag-time">SEO headline</span></div>
+          <img class="case-shot" src="assets/progatix-app-dev-hero.png" alt="Progatix landing page hero reading Mobile App Development Company in USA" loading="lazy">
+          <div class="summary-grid"><div class="sum-block"><div class="sum-block-label">Audience</div><div class="sum-block-val">Businesses looking for a US mobile app development partner.</div></div><div class="sum-block"><div class="sum-block-label">Goal</div><div class="sum-block-val">Name the service and the market in the headline, then promise a smooth user experience.</div></div><div class="sum-block"><div class="sum-block-label">Approach</div><div class="sum-block-val">One sentence of proof and one of promise, covering Android and iOS.</div></div></div>
+          
+          <div class="result-box"><div class="result-label">Excerpt</div><div class="result-text">With extensive experience, our mobile app development company empowers global brands to create and build advanced digital products. We focus on delivering seamless user experiences across all Android and iOS devices.</div></div></div>
+      </button>
+      <button type="button" class="g-tile" data-cat="web" onclick="openTile(this)" aria-haspopup="dialog">
+        <div class="g-thumb"><img src="assets/imbedtech-expert-support.png" alt="IMBED Tech section titled Expert Support, Exceptional Results" loading="lazy"><span class="g-view">View sample →</span></div>
+        <div class="g-info"><div class="case-cat-label">Website Copy</div><div class="case-name">IMBED Tech: Expert Support, Exceptional Results</div><div class="g-tags"><span class="tag tag-low">Web copy</span><span class="tag tag-time">Q&amp;A headings</span></div></div>
+        <div class="g-detail" hidden><div class="case-cat-label">Website Copy</div><h3 class="m-title">IMBED Tech: Expert Support, Exceptional Results</h3><div class="m-tags"><span class="tag tag-low">Web copy</span><span class="tag tag-time">Q&amp;A headings</span></div>
+          <img class="case-shot" src="assets/imbedtech-expert-support.png" alt="IMBED Tech section titled Expert Support, Exceptional Results" loading="lazy">
+          <div class="summary-grid"><div class="sum-block"><div class="sum-block-label">Audience</div><div class="sum-block-val">Buyers comparing support and compliance providers.</div></div><div class="sum-block"><div class="sum-block-label">Goal</div><div class="sum-block-val">Answer the two questions a buyer is already asking.</div></div><div class="sum-block"><div class="sum-block-label">Approach</div><div class="sum-block-val">Question headings, each answered in a short paragraph.</div></div></div>
+          
+          <div class="result-box"><div class="result-label">Excerpt</div><div class="result-text">Partner with IMBED Tech for cutting-edge solutions, seamless support, and customized strategies that optimize efficiency, fuel growth, and drive lasting business success.</div></div></div>
+      </button>
+      <button type="button" class="g-tile" data-cat="web" onclick="openTile(this)" aria-haspopup="dialog">
+        <div class="g-thumb"><img src="assets/osits-industries.png" alt="OSITS industries section with automotive, banking, oil and gas, logistics and retail" loading="lazy"><span class="g-view">View sample →</span></div>
+        <div class="g-info"><div class="case-cat-label">Website Copy</div><div class="case-name">OSITS: Industries section</div><div class="g-tags"><span class="tag tag-low">Web copy</span><span class="tag tag-time">Card layout</span></div></div>
+        <div class="g-detail" hidden><div class="case-cat-label">Website Copy</div><h3 class="m-title">OSITS: Industries section</h3><div class="m-tags"><span class="tag tag-low">Web copy</span><span class="tag tag-time">Card layout</span></div>
+          <img class="case-shot" src="assets/osits-industries.png" alt="OSITS industries section with automotive, banking, oil and gas, logistics and retail" loading="lazy">
+          <div class="summary-grid"><div class="sum-block"><div class="sum-block-label">Audience</div><div class="sum-block-val">Visitors from automotive, banking, oil and gas, logistics and retail.</div></div><div class="sum-block"><div class="sum-block-label">Goal</div><div class="sum-block-val">Let each visitor find their sector quickly.</div></div><div class="sum-block"><div class="sum-block-label">Approach</div><div class="sum-block-val">Card layout with a short description for each industry.</div></div></div>
+          
+          <div class="result-box"><div class="result-label">Excerpt</div><div class="result-text">Experience the way we help you reach your goals. Answer three questions to help us match our expertise and software solutions to your needs.</div></div></div>
+      </button>
+      <button type="button" class="g-tile" data-cat="landing" onclick="openTile(this)" aria-haspopup="dialog">
+        <div class="g-thumb"><img src="assets/progatix-custom-software-hero.png" alt="Progatix hero reading Next-Gen Custom Software Development Experts" loading="lazy"><span class="g-view">View sample →</span></div>
+        <div class="g-info"><div class="case-cat-label">Landing Page</div><div class="case-name">Progatix: Next-Gen Custom Software Development Experts</div><div class="g-tags"><span class="tag tag-low">Landing page</span><span class="tag tag-time">Hero copy</span></div></div>
+        <div class="g-detail" hidden><div class="case-cat-label">Landing Page</div><h3 class="m-title">Progatix: Next-Gen Custom Software Development Experts</h3><div class="m-tags"><span class="tag tag-low">Landing page</span><span class="tag tag-time">Hero copy</span></div>
+          <img class="case-shot" src="assets/progatix-custom-software-hero.png" alt="Progatix hero reading Next-Gen Custom Software Development Experts" loading="lazy">
+          <div class="summary-grid"><div class="sum-block"><div class="sum-block-label">Audience</div><div class="sum-block-val">Businesses that need custom software.</div></div><div class="sum-block"><div class="sum-block-label">Goal</div><div class="sum-block-val">Lead with the benefit and give the visitor two next steps.</div></div><div class="sum-block"><div class="sum-block-label">Approach</div><div class="sum-block-val">Benefit-led subheading with a primary action and a proof action side by side.</div></div></div>
+          
+          <div class="result-box"><div class="result-label">Excerpt</div><div class="result-text">Accelerate business growth, innovate workflows and elevate customer satisfaction, powered by our value-driven custom software development services.</div></div></div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Writing sample details">
+  <div class="m-panel"><button type="button" class="m-close" aria-label="Close" onclick="closeModal()">&times;</button><div id="modalContent"></div></div>
+</div>
+
+<section id="experience">
+  <div class="container">
+    <h2 class="sec-heading">Work History</h2>
+    <div class="exp-list"><div class="exp-card"><div class="exp-header"><div class="exp-role">Sales Representative and Consultant</div><span class="exp-date">Feb 2026 to Present</span></div><div class="exp-company">Ignite Marketing Solutions, Australia</div><ul class="exp-bul"><li>Engaged clients through in-person interactions and outbound sales calls, building rapport and driving conversions.</li><li>Represented clients&#x27; brands in the field, creating authentic, direct connections that increased sales and brand visibility.</li><li>Ran ethical fundraising campaigns, consistently meeting and exceeding targets while connecting meaningfully with donors.</li></ul></div><div class="exp-card"><div class="exp-header"><div class="exp-role">Technical Content Writer</div><span class="exp-date">Jan 2025 to Dec 2025</span></div><div class="exp-company">Expedey, Karachi · <a href="https://www.expedey.com/blogs/how-to-build-a-responsive-website/" target="_blank" rel="noopener">View my published article</a></div><ul class="exp-bul"><li>Wrote clear technical documentation, step-by-step guides and knowledge base articles that helped users resolve common issues without escalation.</li><li>Translated technical processes such as account setup, device onboarding and software installation into easy-to-follow instructions for non-technical readers.</li><li>Documented incidents and resolutions accurately, turning recurring problems into reusable help content.</li><li>Researched topics with technical staff to keep content accurate and complete, then edited and proofread for clarity and consistency.</li></ul></div><div class="exp-card"><div class="exp-header"><div class="exp-role">Technical Content Writer</div><span class="exp-date">Dec 2023 to Nov 2024</span></div><div class="exp-company">Progatix, Karachi</div><ul class="exp-bul"><li>Created technical content for varied audiences, including articles, blog posts, documentation and case studies.</li><li>Optimized content for search engines (SEO) to improve discoverability and ranking on search engine results pages (SERPs).</li><li>Managed content calendars, deadlines and priorities to meet project timelines and deliverables.</li><li>Edited and proofread content for clarity, accuracy and grammar.</li></ul></div><div class="exp-card"><div class="exp-header"><div class="exp-role">SEO Content Writer (Remote)</div><span class="exp-date">May 2022 to Oct 2023</span></div><div class="exp-company"><a href="https://gtechsol.com.au/" target="_blank" rel="noopener">G-Tech Solutions</a> (Australian-based Company)</div><ul class="exp-bul"><li>Produced engaging, error-free content for web pages, blogs, ad copy and other digital properties, optimized to boost search visibility.</li><li>Wrote and edited website content for high-profile clients and revised client websites to drive engagement.</li><li>Collaborated with SEO analysts and team members to improve content quality.</li><li>Translated complex technical concepts into user-friendly guides and documented IT processes, system configurations and troubleshooting workflows.</li></ul></div><div class="exp-card"><div class="exp-header"><div class="exp-role">Content Writer</div><span class="exp-date">Nov 2021 to Feb 2022</span></div><div class="exp-company">Kaizen Solutions, Hyderabad</div><ul class="exp-bul"><li>Researched and created content for a variety of social media platforms.</li><li>Wrote marketing content, including articles and product details, with SEO-friendly headlines.</li><li>Optimized new and existing content in line with market trends, using keyword research.</li></ul></div><div class="exp-card"><div class="exp-header"><div class="exp-role">Web Developer</div><span class="exp-date">Sept 2020 to July 2021</span></div><div class="exp-company">Ghani Business Solutions, Hyderabad</div><ul class="exp-bul"><li>Built web applications using PHP and the CodeIgniter MVC framework on XAMPP.</li><li>Created RESTful APIs and collaborated with backend engineers on features.</li><li>Installed and maintained CodeIgniter, PHP and MySQL environments.</li></ul></div></div>
+    <div style="margin-top: 2.5rem;">
+      <h2 class="sec-heading">Education</h2>
+      <div class="exp-card" style="border-left-color: #FDBA74;">
+        <div class="exp-header"><div class="exp-role">Bachelor of Science in Computer Science (BSCS)</div><span class="exp-date">2019</span></div>
+        <div class="exp-company">Isra University, Pakistan</div>
+      </div>
+    </div>
+      </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <h2 class="sec-heading">Get in Touch</h2>
+      <p>Actively looking for a job in Sydney, Australia.<br>If you have an opening in your company, feel free to reach out.</p>
+      <div class="contact-cards">
+        <a href="mailto:hudashykh1997@gmail.com" class="contact-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> hudashykh1997@gmail.com</a>
+        <a href="tel:+61422259573" class="contact-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg> +61 422 259 573</a>
+        <a href="https://www.linkedin.com/in/huda-shaikh-1a154222b" target="_blank" rel="noopener" class="contact-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Huda Shaikh &nbsp;|&nbsp; Technical Content Writer &nbsp;|&nbsp; Sydney, AU</footer>
+
+<script>
+  function filter(cat, btn) {
+    document.querySelectorAll('.ftag').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.g-tile').forEach(t => {
+      t.style.display = (cat === 'all' || t.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+  const modal = document.getElementById('modal'), mc = document.getElementById('modalContent');
+  let lastTile = null;
+  function openTile(tile) {
+    lastTile = tile;
+    mc.innerHTML = tile.querySelector('.g-detail').innerHTML;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.m-close').focus();
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastTile) lastTile.focus();
+  }
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+</script>
+<script>(function(){
+  function fit(){
+    var img=document.querySelector('.intro-img'),w=document.querySelector('.intro-wide'),g=document.querySelector('.intro-grid');
+    if(!img||!w||!g)return;
+    w.style.marginTop='';
+    if(window.innerWidth<1101)return;
+    var sec=document.getElementById('about').getBoundingClientRect();
+    var imgBottom=img.getBoundingClientRect().bottom,top=w.getBoundingClientRect().top;
+    if(imgBottom+16>top){w.style.marginTop=(parseFloat(getComputedStyle(w).marginTop)+imgBottom+16-top)+'px';}
+  }
+  window.addEventListener('load',fit);window.addEventListener('resize',fit);
+  var im=document.querySelector('.intro-img img');if(im){if(im.complete)fit();else im.addEventListener('load',fit);}
+  fit();
+})();</script>
+</body>
+</html>
